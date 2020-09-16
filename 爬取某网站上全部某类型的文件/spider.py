@@ -8,9 +8,10 @@ from lxml import etree
 
 class GetOnePageFile:
     """
-    使用requests库进行下载，下载一个网页链接上所有某一个类型的文件
+    使用requests库进行下载，下载一个网页链接上所有某一个类型的文件.
+    可能需要重写get_file_url函数中的pattern
     """
-    def __init__(self, url, url_head, file_type='pdf', wait_time=0,
+    def __init__(self, url, url_head, file_type, wait_time=0,
                  folder=None, proxies=None):
         if folder is not None:
             if not os.path.exists(folder):
@@ -59,8 +60,8 @@ class GetOnePageFile:
             if response.status_code == 200:
                 return response
             return None
-        except RequestException:
-            print('Requests error!')
+        except RequestException as e:
+            print('Requests error!: ', e)
             return None
 
 
@@ -78,12 +79,13 @@ class GetOnePageGithub(GetOnePageFile):
 
 
 if __name__ == '__main__':
-    root_dir = r'D:\python\Spider\Li_pdf'
+    root_dir = r'D:\python\Spider\Li_ppt'
     if not os.path.exists(root_dir):
         os.mkdir(root_dir)
     os.chdir(root_dir)
 
     url = 'http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html'
     url_head = 'http://speech.ee.ntu.edu.tw/~tlkagk/'
-    a = GetOnePageFile(url, url_head)
+    file_type = 'ppt'
+    a = GetOnePageFile(url, url_head, file_type)
     a.run()
