@@ -20,6 +20,8 @@ git clone更方便, 但是折腾一下哈哈哈)
 [代码：2-jiandan_ooxx.py](./2-jiandan_ooxx.py)
 [煎蛋ooxx](https://jandan.net/ooxx/MjAyMDA5MTYtMaa=#comments)
 
+![效果图](https://gitee.com/hufanmax/image_bag/raw/master/img/20200916171300.png)
+
 我们观察煎蛋网网址和图片存储位置不一样，图片地址类似下面：
 ```html
 src="//ww1.sinaimg.cn/mw600/9f0b0dd5gy1giric3wgwmj20mj0u1nab.jpg"

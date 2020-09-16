@@ -13,8 +13,8 @@ class JiandanImage(GetOnePageFile):
                  folder=None, proxies=None):
         """
 
-        :param url_begin:
-        :param url_head:
+        :param url_begin: 起始网页
+        :param url_head: 网址头
         :param page_num: 爬取网页数目
         :param file_type:
         :param wait_time:
