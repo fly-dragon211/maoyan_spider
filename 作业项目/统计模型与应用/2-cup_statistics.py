@@ -34,6 +34,7 @@ def mean_fill(series: pd.Series):
     for i in range(len(series)):
         if pd.isna(series[i]):
             series[i] = s_mean
+    print("%s均值：\t%f" % (series.name, s_mean))
 
     return series
 
