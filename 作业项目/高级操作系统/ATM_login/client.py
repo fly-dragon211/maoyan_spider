@@ -3,11 +3,9 @@ import socket  # 导入 socket 模块
 import time
 
 s = socket.socket()  # 创建 socket 对象
-host = socket.gethostname()  # 获取本地主机名
-port = 5056  # 设置端口号
 s.settimeout(0.5)  # 设置套接字操作的超时期，2s
 
-s.connect((host, port))
+s.connect(('127.0.0.1', 8080))
 
 i = 0
 while True:
@@ -22,7 +20,8 @@ while True:
         print('连接关闭')
         break
     except Exception as e:  # todo  socket.timeout 的错误
-        print(e)
+        # print(e)
+        pass
 
     inp = input()
     s.send(inp.encode('utf-8'))
