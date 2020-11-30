@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}RUC网上订餐系统{% endblock %}
+
+{% block body %}
+
+<div>
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-12">
+      <div class="jumbotron">
+        <h3>欢迎使用RUC网上订餐系统</h3>
+      </div>
+      <div class="row">
+{% for shop in shops %}
+<div class="col-xs-6 col-lg-3 shop">
+  <!-- <div class="thumbnails shop_icon">
+    <img class="img-polaroid" src="{% static 'pictures/picture.jpeg' %}" alt="店铺名称" />
+  </div> -->
+  <div class="shop_desc">
+    <h4><a href='/shop/{{shop.id}}'>{{shop.name}}</a></h4>
+    <p>{{shop.shoptype}}</p>
+    <p>起送价: {{shop.miniprice}} 元</p>
+    <p>地址: {{shop.address}} </p>
+    <!-- <p>营业状态:{{shop.status}}</p> -->
+    <p>店铺类型:{{shop.shoptype}}</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--“{{shop.announcement}}”</p>
+    <!-- <p>订单量: {{0}}</p> -->
+  </div>
+</div><!-- 一间店铺 -->
+{% endfor %}
+      </div><!--/row-->
+    </div><!--/.col-xs-12.col-sm-9-->
+  </div><!--/row-->
+
+{% endblock %}

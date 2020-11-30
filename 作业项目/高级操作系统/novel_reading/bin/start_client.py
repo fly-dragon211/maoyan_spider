@@ -5,15 +5,16 @@ import time
 s = socket.socket()  # 创建 socket 对象
 s.settimeout(0.5)  # 设置套接字操作的超时期，2s
 
-s.connect(('127.0.0.1', 8081))
+s.connect(('127.0.0.1', 8080))
 
 i = 0
 while True:
     try:
         i = 0
-        while i < 10:
+        while i < 5:
             receive = s.recv(1024*10).decode('utf-8')
-            print(receive)
+            if receive != '':
+                print(receive)
             time.sleep(0.1)
             i += 1
     except ConnectionAbortedError:
@@ -25,7 +26,7 @@ while True:
 
     inp = input()
     s.send(inp.encode('utf-8'))
-    if inp == '0':
+    if inp == 'q':
         print('退出')
         break
 

@@ -33,6 +33,7 @@ class Login:
 
     def chose_cmd(self):
         msg = """
+        欢迎来到 ATM 自助机
             0 退出
             1 登录
             2 注册
@@ -138,7 +139,8 @@ def redirect(connect: socket.socket):
     sys.stdin = Logger(connect, sys.stdin)
 
 # 线程事件处理函数
-def message_handle(connect, clientaddress):
+def message_handle(connect, clientaddress, g_conn_pool: list):
+    g_conn_pool.append(connect)
     clientInfo = "%s:%d：" % (clientaddress[0], clientaddress[1])
 
     S_io = SocketIo(connect)
@@ -150,7 +152,12 @@ def message_handle(connect, clientaddress):
     g_conn_pool.remove(connect)
     print("Info:客户端%s下线,目前在线客户端%d个。" % (clientInfo, len(g_conn_pool)))
 
+
 class SocketIo:
+    """
+    SocketIo.write: 代替 print
+    SocketIo.read: 代替 input
+    """
     def __init__(self, connect: socket.socket):
         self.connect = connect
 
@@ -167,20 +174,18 @@ if __name__ == "__main__":
     g_conn_pool = [ ]  # 连接池
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 创建服务器socket,基于IPV4的TCP协议
-    s.bind(("127.0.0.1", 8080))  # 绑定端口
+    s.bind(("127.0.0.1", 8081))  # 绑定端口
 
     s.listen(5)  # 等待客户端连接
     while True:
         connect, clientaddress = s.accept()  # 建立客户端连接
-        g_conn_pool.append(connect)
         print('连接地址：', clientaddress)
         # 给每个客户端创建一个独立的线程进行管理
-        thread = Thread(target=message_handle, args=(connect, clientaddress))
+        thread = Thread(target=message_handle, args=(connect, clientaddress, g_conn_pool))
         # 设置成守护线程
         thread.setDaemon(True)
         thread.start()
 
-        # except Exception as e:
-        #     print(e)
+    s.close()  # 关闭服务器
 
 
