@@ -66,6 +66,12 @@ def get_group_entropy1(df, column, key_column):
 def get_group_entropy2(df, key_column, df_group_list: list):
     """
     得到按 df_group_list 分类后的熵
+    eg:
+    ```
+    print(get_group_entropy2(df, '车型', [
+    df[df['年收入'] <= 25], df[(25 < df['年收入']) & (df['年收入'] <= 50)], df[df['年收入'] > 50]
+]))
+```
     :param df:
     :param key_column:
     :param df_group_list:

@@ -7,6 +7,10 @@
     <meta name="description" content="">
     <title>{% block title %}{% endblock %}</title>
 
+    <!-- 自定义样式表 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/offcanvas.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -18,11 +22,9 @@
 
     <script src="{% static 'js/String.js' %}"></script>
 
-    <link rel="icon" href="{% static 'pictures/favor.ico' %}">
+    <link rel="icon" href="{% static 'pictures/.ico' %}">
 
-    <!-- 自定义样式表 -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/offcanvas.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
   </head>
   <body>
 <script>
@@ -39,7 +41,8 @@ function clearCart(elem){
 }
 </script>
     <!-- Static navbar -->
-    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="background-color: rgba(102,49,106,0.43);
+color: #ffffff">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -48,11 +51,11 @@ function clearCart(elem){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">RUC网上订餐系统</a>
+          <a class="navbar-brand" href="/">泡芙猫舍8</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/">查看餐厅</a></li>
+            <li class="active"><a href="/">查看店铺</a></li>
 {% if not session.isLogin %}
 <li><a href='/customer/signup/'>新用户注册</a></li>
 <li><a href='/customer/login/'>登录</a></li>

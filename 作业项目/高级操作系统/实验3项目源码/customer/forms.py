@@ -17,7 +17,7 @@ class SignupForm(forms.Form):
 		help_text='至少3位长')
 	phone = forms.CharField(label='手机号码')
 	ex_phone = forms.CharField(label='备用手机号', required=False, help_text='可选')
-	address = forms.CharField(label='送餐地址')
+	address = forms.CharField(label='地址')
 
 	def clean_account(self):
 		account = self.cleaned_data['account']
@@ -50,5 +50,5 @@ class ProfileForm(forms.Form):
 		help_text='最长20字符')
 	phone = forms.CharField(label='手机号码')
 	ex_phone = forms.CharField(label='备用手机号', required=False, help_text='可选')
-	address = forms.CharField(label='送餐地址')
+	address = forms.CharField(label='地址')
 

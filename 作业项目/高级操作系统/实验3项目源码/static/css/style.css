@@ -1,6 +1,10 @@
 body {
 	padding: 0 0 50px 0;
 }
+nav{
+	background-color: pink;
+
+}
 
 #shop {
 	float: right;
@@ -50,3 +54,5 @@ body {
 .shop_desc {
 	float :left;
 }
+
+body {background-image: url("猫爬架.jpg");}

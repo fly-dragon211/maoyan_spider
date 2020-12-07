@@ -150,4 +150,5 @@ if __name__ == '__main__':
         plt.title(A_name+'---'+B_name)
         plt.legend()
 
+        plt.show()
 
